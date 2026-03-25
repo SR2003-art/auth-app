@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="CSS/styles.css" rel="stylesheet">
+<script src="constants.js"></script>
+<script src="auth-helpers.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">AuthApp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+        <li class="nav-item"><a class="btn btn-outline-light ms-2" href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container my-5 text-center">
+  <h1 id="welcomeMsg" class="display-4 mb-3"></h1>
+  <p class="lead">Welcome to your personal dashboard, <span id="userName" class="fw-bold text-primary"></span>!</p>
+  <p class="text-muted">This is your professional dashboard where you can manage your account.</p>
+</div>
+
+<script>
+/**
+ * @fileoverview Dashboard page - Protected user dashboard
+ * @description Displays personalized dashboard and handles logout
+ * Redirects to login if user is not authenticated
+ */
+
+// Get current user
+const user = getCurrentUser();
+
+// Redirect to login if not authenticated
+if (!user) {
+    redirectTo(ROUTES.LOGIN);
+}
+
+// Display personalized welcome message
+if (user && user.username) {
+    document.getElementById('welcomeMsg').innerText = `Hello ${user.username}`;
+    document.getElementById('userName').innerText = user.username;
+} else {
+    // Fallback if user data is corrupted
+    document.getElementById('welcomeMsg').innerText = 'Hello User';
+    document.getElementById('userName').innerText = 'User';
+}
+
+/**
+ * Handles logout action
+ * Clears current user session and redirects to login
+ * 
+ * @event click
+ * @listens logoutBtn#click
+ */
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    clearCurrentUser();
+    redirectTo(ROUTES.LOGIN);
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

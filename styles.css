@@ -1,0 +1,158 @@
+/**
+ * @file styles.css - Custom styles for authentication app
+ * @description Styling for login, register, reset password, and dashboard pages
+ */
+
+/* ============================================
+   CSS VARIABLES - Color Palette & Spacing
+   ============================================ */
+:root {
+    /* Primary Colors */
+    --primary-color: #4e73df;
+    --primary-hover: #2e59d9;
+    
+    /* Success Colors */
+    --success-color: #1cc88a;
+    --success-hover: #17a673;
+    
+    /* Warning Colors */
+    --warning-color: #f6c23e;
+    --warning-hover: #dda20a;
+    
+    /* Gray Colors */
+    --gray-light: #f0f4ff;
+    --gray-lighter: #d9e6ff;
+    
+    /* Shadows */
+    --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 12px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-short: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+}
+
+/* ============================================
+   TYPOGRAPHY & BODY
+   ============================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, var(--gray-light), var(--gray-lighter));
+    min-height: 100vh;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+/* Cards */
+.card {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   FORM CONTROLS
+   ============================================ */
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    transition: background-color var(--transition-medium);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border: none;
+    transition: background-color var(--transition-medium);
+}
+
+.btn-success:hover {
+    background-color: var(--success-hover);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border: none;
+    transition: background-color var(--transition-medium);
+}
+
+.btn-warning:hover {
+    background-color: var(--warning-hover);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+    transition: color var(--transition-short);
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar .btn-outline-light {
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-medium);
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   PASSWORD TOGGLE BUTTON
+   ============================================ */
+
+.input-group .btn-outline-secondary {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: background-color var(--transition-medium);
+}
+
+.input-group .btn-outline-secondary:hover {
+    background-color: #e2e6ea;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .card {
+        margin: 0 1rem;
+    }
+}
